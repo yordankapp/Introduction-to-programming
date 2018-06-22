@@ -1,0 +1,174 @@
+
+пресмята:
+Pn(x) = a0x^n + a1x^n-1 + a2x^n-2 + … + an-1x + an
+
+използваме:
+Pn(x) = (((…(a0x + a1)x + a2)x … +an-2)x+ an-1)x + an
+
+
+#include<iostream>
+using namespace std;
+
+
+int main()
+{
+    int n;
+    double a,x,P=0;
+    cout<<"x= ";
+    cin>>x;
+    do
+    {
+        cout<<"n= ";
+        cin>>n;
+    }
+    while(n<0);
+    for(int i=0;i<n;i++)
+    {
+        cout<<"a= ";
+        cin>>a;
+        P=P*x+a;
+    }
+    cout<<"P= "<<P<<endl;
+    return 0;
+}
+
+*****************************************************************************
+
+#include<iostream>
+using namespace std;
+const int MAX=100;
+/*намира и извежда степента и коефициентите на полинома
+Rl(x) = Pn(x) + Qm(x);
+
+ */
+
+void Sum(int a[], int b[], int st_a, int st_b, int c[], int& st_c)
+{
+    int i,j;
+    if (st_a>st_b)
+    {
+        st_c=st_a;
+        cout<<st_c<<endl;
+        for (i=0;i<st_a-st_b;i++)
+           {c[i]=a[i];
+               cout<<c[i]<<" ";}
+
+        j=0;
+        for (i=st_a-st_b;i<=st_a;i++)
+        { c[i]=a[i]+b[j++];
+            cout<<c[i]<<" ";}
+    }
+    else
+    {
+        st_c=st_b;
+        cout<<st_c<<endl;
+        for (i=0;i<st_b-st_a;i++)
+        {   c[i]=b[i];
+            cout<<c[i]<<" ";}
+        j=0;
+        for (i=st_b-st_a;i<=st_b;i++)
+        { c[i]=a[j++]+b[i];
+            cout<<c[i]<<" ";}
+    }
+}
+
+int main()
+{
+    int x,n,m,k,a[MAX],b[MAX],c[MAX];
+    cout<<"x= ";
+    cin>>x;
+    do
+    {
+        cout<<"n= ";
+        cin>>n;
+    }
+    while(n<0);
+
+    for(int i=0;i<n+1;i++)
+    {
+        cin>>a[i];
+    }
+
+    do
+    {
+        cout<<"m= ";
+        cin>>m;
+    }
+    while(m<0);
+
+    for(int i=0;i<m+1;i++)
+    {
+        cin>>b[i];
+    }
+
+    Sum(a,b,n,m,c,k);
+
+    return 0;
+}
+
+
+***************************************************************************************
+
+намира и извежда степента и коефициентите на полинома
+Rl(x) = Pn(x) * Qm(x);
+
+#include<iostream>
+using namespace std;
+const int MAX=100;
+
+
+void Mult(int a[], int b[], int st_a, int st_b, int c[], int& st_c)
+{
+    st_c=st_a+st_b;
+    cout<<st_c<<endl;
+    for(int i=0;i<=st_c;i++)
+    {
+        c[i]=0;
+        for(int j=0;j<=st_a;j++)
+        {
+            for(int f=0;f<=st_b;f++)
+            {
+               if(j+f==i)
+                 c[i]=c[i]+a[j]*b[i-j];
+            }
+        }
+    }
+    for(int i=0;i<=st_c;i++)
+    {
+        cout<<c[i]<<" ";
+    }
+}
+
+int main()
+{
+    int x,n,m,k,a[MAX],b[MAX],c[MAX];
+    cout<<"x= ";
+    cin>>x;
+    do
+    {
+        cout<<"n= ";
+        cin>>n;
+    }
+    while(n<0);
+
+    for(int i=0;i<n+1;i++)
+    {
+        cin>>a[i];
+    }
+
+    do
+    {
+        cout<<"m= ";
+        cin>>m;
+    }
+    while(m<0);
+
+    for(int i=0;i<m+1;i++)
+    {
+        cin>>b[i];
+    }
+
+    Mult(a,b,n,m,c,k);
+
+    return 0;
+}

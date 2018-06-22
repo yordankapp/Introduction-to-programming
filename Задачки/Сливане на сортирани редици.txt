@@ -1,0 +1,74 @@
+
+Дадени са две сортирани редици (напр. във възходящ ред)
+
+конструирането на редица, която
+съдържа всички елементи на дадените редици и също е сортирана
+
+
+#include<iostream>
+using namespace std;
+const int MAX=100;
+
+
+void sort(int *arr,int x)
+{
+    int swap=0;
+    for(int i=0;i<x;i++)
+    {
+        int min=i;
+        for(int j=i;j<x;j++) {
+            if (arr[j] < arr[min])
+                min = j;
+        }
+        swap=arr[min];
+        arr[min]=arr[i];
+        arr[i]=swap;
+    }
+}
+
+void Merge(int a[], int len_a, int b[], int len_b, int c[], int& len_c)
+{
+    int i = 0, j = 0, k = 0; //Указатели към редиците
+    int l;
+    len_c = len_a + len_b;
+    while ((i <= len_a) && (j <= len_b))
+        if (a[i] < b[j])
+            c[k++] = a[i++];
+        else
+            c[k++] = b[j++];
+    if (i >= len_a) //Първата редица е изчерпана
+        for (l = j; l < len_b; l++)
+            c[k++] = b[l];
+    else //Втората редица е изчерпана
+        for (l = i; l < len_a; l++)
+            c[k++] = a[i];
+    for (int i=0; i < len_c; i++)
+    {
+        cout<<c[i]<<" ";
+    }
+    cout<<endl;
+}
+
+int main()
+{
+    int n,m,k, arrA[MAX], arrB[MAX], arrC[MAX];
+    cout<<"Elements in array A= ";
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cin>>arrA[i];
+    }
+    cout<<"Elements in array B= ";
+    cin>>m;
+    for(int i=0;i<m;i++)
+    {
+        cin>>arrB[i];
+    }
+    
+    sort(arrA,n)
+    sort(arrB,m)
+    
+    Merge(arrA,n,arrB,m,arrC,k);
+    cout<<endl;
+    return 0;
+}

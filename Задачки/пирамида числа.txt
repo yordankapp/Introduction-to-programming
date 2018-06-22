@@ -1,0 +1,61 @@
+
+
+#include <iostream>
+#include <iomanip>
+
+/*
+ * 1
+   121
+  12321
+ 1234321
+123454321
+ 12...n...21
+ */
+
+
+using namespace std;
+
+void Pyramid(int currentNumber, int currentRow, int countNumbers, int n)
+{
+    if(currentRow==1)
+        cout<<setw(n);
+    if(countNumbers==2*(currentRow-1) && currentRow==n)
+        cout<<currentNumber<<" ";
+    else
+    {
+        if(countNumbers==2*(currentRow-1))
+        {
+            cout<<currentNumber<<endl;
+            cout<<setw(n-currentRow);
+            Pyramid(1,currentRow+1,0,n);
+        }
+        else
+        {
+            if(countNumbers<currentRow-1)
+            {
+                cout<<currentNumber;
+                Pyramid(currentNumber+1,currentRow,countNumbers+1,n);
+            }
+            else
+            {
+                cout<<currentNumber;
+                Pyramid(currentNumber-1,currentRow,countNumbers+1,n);
+            }
+
+        }
+    }
+}
+
+void drawPyramid(int n)
+{
+    if(n<=0) return;
+    Pyramid(1,1,0,n);
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    drawPyramid(n);
+    return 0;
+}

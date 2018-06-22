@@ -1,0 +1,68 @@
+#include<iostream>
+#include <cstring>
+
+using namespace std;
+
+
+int main()
+{
+    char str1[4]="abc", str2[9]="mnoabcsp", str3[10];
+
+    strcat(str2,str1);  //Конкатенация на низове
+    cout<<str2<<endl;
+
+    cout<<strcmp(str1,str2)<<endl;  //Сравняване на низове
+
+    strcpy(str3,str1); //Копиране на низ
+    cout<<str3<<endl;
+
+    cout<<strstr(str1,str2)<<endl ;  //Търсене на низ в друг низ
+
+    //Преобразуване на низ в цяло число
+    char s[15] = "-123a45", p[15] = "b123a45";
+    cout << atoi(s) << endl; // -123
+    cout << atoi(p) << endl;  // 0
+
+    //Преобразуване на низ в реално число
+    char st[15] = "-123.35a45", m[15] = "123.34c35a45";
+    cout << atof(st) << endl; // –123.35
+    cout << atof(m) << endl; // 0.123
+
+    //Конкатенация на n символа от низ с друг низ
+    char a[10] ="aaaaa";
+    strncat(a,"qwertyqwerty", 5);
+    cout << a<<endl;  // aaaaaqwert
+
+   // Копиране на n символа в символен низ
+    strncpy(a, "123456789", 5);
+    cout << a << "\n"; // 12345<неопределено>
+
+    //Сравняване на n символа на низове
+    1 char a[10] = “qwer”, b[15] = “qwerty”;
+    if (!strncmp(a, b, 3)) cout << “yes \n”;
+    else cout << “no \n”;
+    извежда yes, тъй като strncpm(a, b) връща 0 (низовете са равни), !strncmp(a, b) e 1 (true).
+    2. char a[10] = “qwer”, b[15] = “qwerty”;
+    if (strncmp(a, b, 5)) cout << “yes \n”;
+    else cout << “no \n”;
+    извежда yes, тъй като strncpm(a, b) връща -1 (a е по-малък от b).
+    3.	char a[10] = “qwerty”, b[15] = “qwer”;
+    if (strncmp(a, b, 5)) cout << “yes \n”;
+    else cout << “no \n”;
+    извежда yes, тъй като strncpm(a, b) връща 1 (a е по-голям от b).
+
+    //Търсене на символ в низ
+    cout << strchr(“qwerty”, ‘e’);
+    извежда erty
+    Операторът
+    cout << strchr(“qwerty”, ‘p’);
+    извежда съобщение за грешка, а
+    if (strchr(“qwerty”, ‘p’)) cout << “yes \n”; else cout << “no \n”;
+    извежда no, тъй като ‘p’ не се среща в низа “qwerty”.
+
+   // Търсене на първата разлика
+    char a[10]= "asdndf", b[15] = "asdsdfdhf";
+    cout << strspn(a, b) << "\n";
+    извежда 3 тъй като първият символ, по който се различават a и b е в позиция 4.
+    return 0;
+}

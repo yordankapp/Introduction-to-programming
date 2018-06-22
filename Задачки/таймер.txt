@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int minutes, seconds;
+    cout << "min ";cin >> minutes;
+    cout << "sek ";cin >> seconds;
+    while (minutes > 0 || seconds > 0) {
+        cout << minutes << ':' <<
+             ((seconds < 10) ? "0" : "") << seconds << endl;
+        if (seconds == 0) {
+            minutes--;
+            seconds = 59;
+        } else
+            seconds--;
+    }
+    return 0;
+
+}
+
+
+/*
+2:03
+2:02
+2:01
+2:00
+1:59
+1:58
+...
+1:01
+1:00
+0:59
+...
+0:01
+0:00
+*/

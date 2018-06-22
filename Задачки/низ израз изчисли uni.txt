@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+const int  MAX= 100;
+
+long expr(char const*& s) 
+{
+    if (*s >= '0' && *s <= '9')
+        // премествайки s, пресмятаме стойността на цифрата
+        return *s++ - '0';
+
+    long a = expr(++s); // прескачайки '(' пресмятаме първия израз
+    char op = *s; // запомняме операцията
+    long b = expr(++s); // прескачайки операцията пресмятаме втория израз
+    
+      s++;	 // прескачаме ')' и осигуряваме, че сочим след края на израза
+    
+      switch (op) {
+        case '+' : return a + b;
+        case '-' : return a - b;
+        case '*' : return a * b;
+        case '/' : if (b == 0) return 0; else return a / b;
+        default  : return 0;
+    }
+}
+int main()
+{
+    char s[100];
+    cin.getline(s,100);
+    char const *p = s;
+    cout<<"Rez: "<<expr(p);
+    return 0;
+
+}

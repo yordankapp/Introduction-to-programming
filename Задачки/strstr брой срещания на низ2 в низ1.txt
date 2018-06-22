@@ -1,0 +1,30 @@
+// Да се опише функция, която по два дадени низа str1 и str2 проверява колко пъти низа
+// str2 се среща в str1.
+
+#include<iostream>
+#include <cstring>
+using namespace std;
+
+int Count(char str1[],char str2[])
+{
+    int br=0;
+    while(strlen(str1)>strlen(str2) && strstr(str1,str2))
+    {
+        strcpy(str1, strstr(str1,str2)+strlen(str2));
+        br++;
+
+        // /“прескачаме” открития подниз като към
+        // адреса му прибавим неговата дължина
+    }
+    cout<<br<<endl;
+
+}
+using namespace std;
+int main()
+{
+    char str1[100], str2[100];
+    cin.getline(str1,100);
+    cin.getline(str2,100);
+    Count(str1,str2);
+    return 0;
+}

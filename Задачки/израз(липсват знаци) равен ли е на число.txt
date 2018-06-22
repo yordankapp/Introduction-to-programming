@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+
+const int MAX=100;
+int n,k, arrX[MAX], signs[MAX],elems[MAX];
+/*
+ * (((( (x0 ? x1) ? x2)...)?xn =?=k
+ */
+// на мястото на ? трябва да има знак + , - , * или /
+void printExpr()
+{
+    cout<<arrX[0];
+    for(int i=0;i<n;i++)
+    {
+        cout<<(char)signs[i]<<arrX[i+1];
+    }
+    cout<<endl;
+}
+
+int calc()
+{
+    int res=arrX[0];
+    for(int i=0;i<n;i++)
+    {
+        switch(signs[i])
+        {
+            case '+': res += arrX[i + 1]; break;
+            case '-': res -= arrX[i + 1]; break;
+            case '*': res *= arrX[i + 1]; break;
+            case '/': res /= arrX[i + 1]; break;
+        }
+    }
+    return res;
+}
+
+bool solve(int i)
+{
+    if(i>n)
+        return false;
+    if(i==n)
+    {
+        if(calc()==k)
+        {
+            printExpr();
+            return true;
+        }
+        else return false;
+    }
+    for(int j=0;j<4;j++)
+    {
+        signs[i]=elems[j];
+        if(solve(i+1))
+            return true;
+    }
+    return false;
+}
+
+int main()
+{
+    cout<<"Vuvedete chisloto koeto iskate da poluchite ";
+    cin>>k;
+    cout<<endl;
+    cout<<"Vuvedete broi elementi -1 : ";
+    cin>>n;
+    cout<<endl;
+    elems[0]='+';
+    elems[1]='-';
+    elems[2]='*';
+    elems[3]='/';
+
+    for(int i=0;i<=n;i++)
+    {
+        cin>>arrX[i];
+    }
+    if(!solve(0))
+        cout<<"No";
+    return 0;
+}

@@ -1,0 +1,75 @@
+#include<iostream>
+
+using namespace std;
+
+/*
+     вход:
+     0934
+     1756
+     изход:
+     8 ч 22 мин
+
+     вход:
+     1756
+     0934
+     изход:
+     15 ч 38 мин
+
+     */
+
+int getMinutes(int z)
+{
+    int v1,v2,minutes;
+    v1=z%10;
+    z/=10;
+    v2=z%10;
+    if(v2==0)
+        minutes=v1;
+    else
+        minutes=v2*10+v1;
+
+    return minutes;
+}
+
+int getHour(int z)
+{
+    int v1,v2,hours;
+    v1=z%10;
+    z/=10;
+    v1=z%10;
+    z/=10;
+    v1=z%10;
+    z/=10;
+    v2=z%10;
+    if(v2==0)
+        hours=v1;
+    else
+        hours=v2*10+v1;
+
+    return hours;
+}
+
+int getRazlika(int hour1,int hour2,int minutes1,int minutes2)
+{
+    if (minutes2<minutes1)
+    {
+        hour2--;
+        minutes2+=60;
+    }
+    if (hour2<hour1)
+        hour2+=24;
+    cout<<"The difference between two times is: "<<hour2-hour1<<" h "
+        <<minutes2-minutes1<<" minutes."<<endl;
+}
+int main()
+{
+    int hour1,hour2,minutes1,minutes2,x,y;
+    cin>>x>>y;
+    hour1=getHour(x);
+    hour2=getHour(y);
+    minutes1=getMinutes(x);
+    minutes2=getMinutes(y);
+
+    getRazlika(hour1,hour2,minutes1,minutes2);
+    return 0;
+}

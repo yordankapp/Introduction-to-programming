@@ -1,0 +1,119 @@
+функция Min от тип int, която връща индекса на най-малкия елемент
+на целочислен масив
+
+#include<iostream>
+using namespace std;
+const int MAX=100;
+int MinIndex(const int arr[],int lenght)
+{
+    int min=arr[0],index=0;
+    for(int i=0;i<lenght;i++)
+    {
+        if(arr[i]<min)
+        {
+            min = arr[i];
+            index = i;
+        }
+    }
+    cout<<"Min Index is "<<index<<endl;
+
+}
+int main()
+{
+    int arr[MAX],n;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    MinIndex(arr,n);
+    return 0;
+}
+
+******************************************************************************
+функция, която по дадени два масива а и b проверява дали
+стойностите на двата масива съвпадат
+
+#include<iostream>
+using namespace std;
+const int MAX=100;
+bool doesValmatch(int arr1[],int arr2[],int n, int m)
+{
+    bool flag=true;
+    if(n<m || n>m) return false;
+    for(int i=0;i<n;i++)
+    {
+        if(arr1[i]!=arr2[i])
+            flag=false;
+    }
+    return flag;
+}
+int main()
+{
+    int arr1[MAX],arr2[MAX],n,m;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr1[i];
+    }
+    cin>>m;
+    for(int i=0;i<m;i++)
+    {
+        cin>>arr2[i];
+    }
+
+    cout<<doesValmatch(arr1,arr2,n,m)<<endl;
+
+    return 0;
+}
+
+
+********************************************************************************
+
+функция, която по дадени два масива а и b с еднакъв брой елементи
+конструира масив с, всеки елемент на който е сбор от стойностите на съответните
+елементи на а и b
+
+
+#include<iostream>
+using namespace std;
+const int MAX=100;
+int Newarr(int arr1[],int arr2[],int n, int m)
+{
+
+    if(n<m || n>m)
+    {
+        cout << "Error!";
+        return 0;
+    }
+    int arr3[n];
+    for(int i=0;i<n;i++)
+    {
+        arr3[i]=arr1[i]+arr2[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr3[i]<<" ";
+    }
+    cout<<endl;
+    return 0;
+}
+
+int main()
+{
+    int arr1[MAX],arr2[MAX],n,m;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr1[i];
+    }
+    cin>>m;
+    for(int i=0;i<m;i++)
+    {
+        cin>>arr2[i];
+    }
+
+    Newarr(arr1,arr2,n,m);
+
+    return 0;
+}

@@ -1,0 +1,74 @@
+
+
+The following code print elements of a linked list in reverse order (from tail to head)
+
+
+#include<iostream>
+using namespace std;
+
+typedef struct node
+{
+    int data;
+    node* next;
+} node;
+
+class List
+{
+public:
+    List(node* n = 0):head(n){}
+    void addNode(int d);
+    void print();
+    void reverse_print(node *);
+    node* getHead() {return head;}
+private:
+    node* head;
+};
+
+void List::addNode(int d)
+{
+    if(head == 0) {
+        head = new node;
+        head->data = d;
+        head->next = 0;
+        return;
+    }
+
+    node* ptr = head;
+
+    while(ptr) {
+        if(ptr->next == 0) {
+            ptr->next = new node;
+            ptr->next->data = d;
+            ptr->next->next = 0;
+            break;
+        }
+        ptr = ptr->next;
+    }
+}
+
+void List::print()
+{
+    node* ptr = head;
+    while(ptr) {
+        cout << ptr->data << " ";
+        ptr = ptr->next;
+    }
+    cout << endl;
+}
+
+void List::reverse_print(node *ptr)
+{
+    if(ptr == 0) return;
+
+    reverse_print(ptr->next);
+    cout << ptr->data << " ";
+}
+
+int main()
+{
+    List L = List();
+    L.addNode(1);L.addNode(2);L.addNode(3);L.addNode(4);L.addNode(5);
+    L.print();
+    L.reverse_print(L.getHead());
+    return 0;
+}

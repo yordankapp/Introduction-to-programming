@@ -1,0 +1,68 @@
+
+1 начин: 
+
+void permute(char a[], int i, int n)
+{
+   int j;
+   if (i == n)
+     cout << a << endl;
+   else
+   {
+       for (j = i; j <= n; j++)
+       {
+          swap(a[i], a[j]);          
+          permute(a, i+1, n);
+          swap(a[i], a[j]);
+       }
+   }
+} 
+
+int main()
+{
+   char a[] = "ABCD";
+   permute(a, 0, 3);
+   getchar();
+   return 0;
+}
+
+*************************************************
+2 начин:
+
+
+#include<iostream>
+#include <cstring>
+
+using namespace std;
+
+void swap(char* str1, char* str2)
+{
+    char ch= *str2;
+    *str2=*str1;
+    *str1=ch;
+}
+
+int permutate(char* str,int start,int end)
+{
+    if(end-start==0)
+    {
+        cout<<str<<endl;
+    }
+    else
+    {
+        for(int i=start;i<=end;i++)
+        {
+            swap(str[start],str[i]);
+            permutate(str,start+1,end);
+            swap(str[start],str[i]);
+        }
+    }
+}
+
+int main()
+{
+    char str[100];
+    cin.getline(str,100);
+    permutate(str,0,strlen(str)-1);
+    return 0;
+}
+
