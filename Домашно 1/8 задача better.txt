@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,br=0;
+    cin>>n;
+    cout<<n<<"= ";
+    if(n==0) cout<<"0";
+    if(n>=50)
+    {
+         while(n>=50)
+        {
+         n-=50;
+         br++;
+        }
+        cout<<br<<"*50 ";
+    }
+    if(n>=20)
+    {
+        br=0;
+         while(n>=20)
+        {
+         n-=20;
+         br++;
+        }
+        cout<<br<<"*20 ";
+    }
+     if(n>=10)
+    {
+         br=0;
+         while(n>=10)
+        {
+         n-=10;
+         br++;
+        }
+        cout<<br<<"*10 ";
+    }
+     if(n>=5)
+    {
+        br=0;
+         while(n>=5)
+        {
+         n-=5;
+         br++;
+        }
+        cout<<br<<"*5 ";
+    }
+     if(n>=2)
+    {
+         br=0;
+         while(n>=2)
+        {
+         n-=2;
+         br++;
+        }
+        cout<<br<<"*2 ";
+    }
+     if(n>=1)
+    {
+         br=0;
+         while(n>=1)
+        {
+         n-=1;
+         br++;
+        }
+        cout<<br<<"*1 ";
+    }
+    return 0;
+}

@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int convertBinaryToDecimal(long long n, int k);
+
+int main()
+{
+    long long n, k;
+
+    cout << "Enter a binary number: ";
+    cin >> n>>k;
+ 
+    cout << n << " in binary = " << convertBinaryToDecimal(n,k) << "in decimal";
+    return 0;
+}
+
+int convertBinaryToDecimal(long long n, int k)
+{
+    int decimalNumber = 0, i = 0, remainder;
+    while (n!=0)
+    {
+        remainder = n%10;
+        n /= 10;
+        decimalNumber += remainder*pow(k,i);
+        ++i;
+    }
+    return decimalNumber;
+}

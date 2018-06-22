@@ -1,0 +1,79 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    /* програма, която въвежда произволна латинска буква и отпечатва
+    следващата по ред буква (напр. B -> C  , c->d )
+     */
+
+    char letter;
+    cin>>letter;
+    letter++;
+    cout<<letter<<endl;
+    return 0;
+}
+
+*************************************************************
+
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    /* програма, която въвежда главна латинска буква и извежда
+       съответната малка буква
+     */
+
+    char letter;
+    cin>>letter;
+    letter+='a'-'A';
+    cout<<letter<<endl;
+    return 0;
+}
+
+*************************************************************
+
+
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    /* програма, която въвежда малка латинска буква и извежда
+       съответната главна буква
+     */
+
+    char letter;
+    cin>>letter;
+    letter-='a'-'A';
+    cout<<letter<<endl;
+    return 0;
+}
+************************************************************
+ABCDE
+BCDEF
+CDEFG
+DEFGH
+EFGHI
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    for(int i=65;i<=69;i++)
+    {
+        for(int j=i;j<=i+4;j++)
+        {
+            cout<<(char)j;
+        }
+        cout<<endl;
+
+    }
+
+    return 0;
+}

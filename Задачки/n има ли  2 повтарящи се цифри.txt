@@ -1,0 +1,27 @@
+
+// дали в дадено ест число n има 2 повтарящи се цифри 
+// не е много точна
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int n, m = 0;
+    cout << "n = ";
+    cin >> n;
+    while (n > 0 && m == 0) {
+        int d = n % 10;
+        n /= 10;
+        m = n;
+        while (m > 0 && m % 10 != d)
+            m /= 10;
+        if (m > 0) {
+            cout << "ima\n";
+        } else {
+            cout << "nqma\n";
+        }
+
+    }
+    return 0;
+}

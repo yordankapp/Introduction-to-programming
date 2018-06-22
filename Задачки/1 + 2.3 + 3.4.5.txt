@@ -1,0 +1,23 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+
+    /*
+     1 + 2.3 + 3.4.5 + ... + n(n+1) ... (n+n+1)
+
+     */
+    int n,sum=0,p;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        p=1;
+        for(int j=i;j<=2*i-1;j++)
+            p=p*j;
+        sum+=p;
+    }
+    cout<<sum<<endl;
+    return 0;
+}
